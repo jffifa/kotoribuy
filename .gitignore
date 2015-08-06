@@ -58,3 +58,4 @@ target/
 
 # django
 src/kotoribuy/settings.py
+migrations/

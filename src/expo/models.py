@@ -11,6 +11,12 @@ class Event(models.Model):
     name = models.CharField(max_length=64, unique=True, verbose_name=u'名字')
     abbr = models.CharField(max_length=64, blank=True, default='', verbose_name=u'简写')
 
+    def __unicode__(self):
+        if self.abbr:
+            return u'%s(%s)' % (self.name, self.abbr)
+        else:
+            return self.name
+
 class Booth(models.Model):
     class Meta:
         verbose_name = u'摊位'
@@ -23,3 +29,6 @@ class Booth(models.Model):
     page = models.URLField(max_length=255, blank=True, verbose_name=u'专门页面')
     tags = models.TextField(blank=True, verbose_name=u'标签（用英文逗号,分隔）')
     comment = models.TextField(blank=True, verbose_name=u'备注')
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.circle, self.location)
