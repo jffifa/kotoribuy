@@ -17,6 +17,15 @@ class Event(models.Model):
         else:
             return self.name
 
+
+class Tag(models.Model):
+
+    name = models.CharField(max_length=255, blank=False, null=False, unique=True, verbose_name=u'tag名称')
+
+    def __unicode__(self):
+        return self.name
+
+
 class Booth(models.Model):
     class Meta:
         verbose_name = u'摊位'
@@ -33,10 +42,3 @@ class Booth(models.Model):
 
     def __unicode__(self):
         return u'%s - %s' % (self.circle, self.location)
-
-class Tag(models.Model):
-
-    name = models.CharField(max_length=255, blank=False, null=False, unique=True, verbose_name=u'tag名称')
-
-    def __unicode__(self):
-        return self.name
