@@ -57,5 +57,5 @@ docs/_build/
 target/
 
 # django
-src/kotoribuy/settings.py
+kotoribuy/settings.py
 migrations/
