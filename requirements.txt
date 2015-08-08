@@ -1,0 +1,4 @@
+django
+django-autocomplete-light
+pillow
+mysqlclient
