@@ -38,7 +38,15 @@ class Booth(models.Model):
     page = models.URLField(max_length=255, blank=True, verbose_name=u'专门页面')
     tags = models.TextField(blank=True, verbose_name=u'标签（用英文逗号,分隔）')
     comment = models.TextField(blank=True, verbose_name=u'备注')
-    tag_set = models.ManyToManyField(Tag, related_name='booth_set')
+    tag_set = models.ManyToManyField(Tag, through='BoothTag', through_fields=('booth','tag'), related_name='booth_set')
 
     def __unicode__(self):
         return u'%s - %s' % (self.circle, self.location)
+
+
+class BoothTag(models.Model):
+    class Meta:
+        db_table = 'expo_booth_tag_set'
+
+    booth = models.ForeignKey(Booth)
+    tag = models.ForeignKey(Tag)
