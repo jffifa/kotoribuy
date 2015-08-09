@@ -3,17 +3,17 @@ from django.contrib import admin
 # Register your models here.
 
 import autocomplete_light
-from .models import Event, Booth, Tag
+from .models import Event, Booth, Tag, BoothTag
 
 
 class BoothTagInline(admin.StackedInline):
-    form = autocomplete_light.modelform_factory(Tag)
-    model = Tag
+    form = autocomplete_light.modelform_factory(BoothTag, exclude=[])
+    model = BoothTag
     extra = 0
 
 
 class BoothAdmin(admin.ModelAdmin):
-    form = autocomplete_light.modelform_factory(Booth)
+    form = autocomplete_light.modelform_factory(Booth, exclude=[])
 
     inlines = [BoothTagInline,]
 
