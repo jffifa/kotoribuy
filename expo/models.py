@@ -45,5 +45,8 @@ class Booth(models.Model):
 
 
 class BoothTag(models.Model):
+    class Meta:
+        db_table = 'expo_booth_tag_set'
+
     booth = models.ForeignKey(Booth)
     tag = models.ForeignKey(Tag)
