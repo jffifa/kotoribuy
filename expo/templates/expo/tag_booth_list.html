@@ -5,7 +5,7 @@
 <div class="row">
 <div class="col-md-9">
     {% if tag_query %}
-    <h1 class="page-header">Results <small>{{ tag_name }}</small></h1>
+    <h1 class="page-header">{{ tag_query }} <small>Results</small></h1>
     {% else %}
     <h1 class="page-header">Comiket 88 <small>just buy</small></h1>
     {% endif %}
@@ -34,7 +34,7 @@
         <a href="{% url 'tag_id' tag_id=tag.id %}" class="list-group-item">{{ tag.name }}</a>
         {% endfor %}
     </div>
-    {% if tag_name %}
+    {% if tag_query %}
     <div>
         <a class="btn btn-primary" href="{% url 'index' %}">Back to Index</a>
     </div>
