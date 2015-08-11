@@ -11,10 +11,15 @@
     {% endif %}
     <div class="row">
         {% for booth in booths %}
-        <a href="#" class="thumbnail">
+        <div class="col-md-4"> <a href="#" class="thumbnail">
             <img src="{{ booth.logo.url }}"/>
-        </a>
+        </a></div>
+        {% if forloop.counter|divisibleby:3 %}
     </div>
+    <div class="row">
+        {% endif %}
+    </div>
+    {% endfor %}
 </div>
 <div class="col-md-3">
     <ul class="list-group">
@@ -25,3 +30,4 @@
 </div>
 </div>
 </div>
+{% endblock %}
