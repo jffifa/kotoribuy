@@ -4,7 +4,37 @@
 <h1 class="page-header">{{ booth.circle }}</h1>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="{{ booth.logo.url }}" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table-bordered">
+                <tbody>
+                <tr>
+                    <td><strong>Enterprise Name</strong></td>
+                    <td>{{ booth.circle }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Location</strong></td>
+                    <td>{{ booth.location }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Comment</strong></td>
+                    <td>{{ booth.comment }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Goods Tags</strong></td>
+                    <td>{% for tag in booth_tag %}{% if not forloop.first %}, {% endif %}<a href="{% url 'tag_id' tag_id=tag.id %}">{{ tag.name }}</a>{% endfor %}</td>
+                </tr>
+                <tr>
+                    <td><strong>Sp Page</strong></td>
+                    <td><a href="{{ booth.page }}">{{ booth.page }}</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+{% endblock %}

@@ -4,19 +4,19 @@
 <div class="container">
 <div class="row">
 <div class="col-md-9">
-    {% if tag_name %}
+    {% if tag_query %}
     <h1 class="page-header">Results <small>{{ tag_name }}</small></h1>
     {% else %}
     <h1 class="page-header">Comiket 88 <small>just buy</small></h1>
     {% endif %}
-    <div class="row" style="margin-bottom:40px">
+    <div class="row" style="margin-bottom:32px">
         {% for booth in booths %}
-        <div class="col-md-4" data-toggle="tooltip" data-placement="bottom" title="{{ booth.circle }}"><a href="{% url 'booth_detail' booth.id %}" class="thumbnail">
-            <img src="{{ booth.logo.url }}"/>
+        <div class="col-md-4"><a href="{% url 'booth_detail' booth.id %}" class="thumbnail">
+            <img data-toggle="tooltip" data-placement="bottom" title="{{ booth.circle }}" src="{{ booth.logo.url }}"/>
         </a></div>
         {% if forloop.counter|divisibleby:3 %}
     </div>
-    <div class="row">
+    <div class="row" style="margin-bottom:32px">
         {% endif %}
     {% endfor %}
     </div>
@@ -34,6 +34,11 @@
         <a href="{% url 'tag_id' tag_id=tag.id %}" class="list-group-item">{{ tag.name }}</a>
         {% endfor %}
     </div>
+    {% if tag_name %}
+    <div>
+        <a class="btn btn-primary" href="{% url 'index' %}">Back to Index</a>
+    </div>
+    {% endif %}
 </div>
 </div>
 </div>
