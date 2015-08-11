@@ -15,7 +15,7 @@ def booth_detail(request, booth_id=None):
     context['booth'] = booth
     context['booth_tag'] = booth_tags
 
-    return render(request, 'expo/booth_detail.html')
+    return render(request, 'expo/booth_detail.html', context)
 
 
 def tag_filter(request, tag_id=None, tag_query=''):
