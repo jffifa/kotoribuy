@@ -1,0 +1,27 @@
+{% extends "expo/base.html" %}
+{% block title %}Comiket 88{% endblock %}
+{% block main %}
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+    {% if tag_name %}
+    <h1 class="page-header">Results <small>{{ tag_name }}</small></h1>
+    {% else %}
+    <h1 class="page-header">Comiket 88 <small>just buy</small></h1>
+    {% endif %}
+    <div class="row">
+        {% for booth in booths %}
+        <a href="#" class="thumbnail">
+            <img src="{{ booth.logo.url }}"/>
+        </a>
+    </div>
+</div>
+<div class="col-md-3">
+    <ul class="list-group">
+        {% for tag in tags %}
+        <a href="#" class="list-group-item">tag.name</a>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+</div>
