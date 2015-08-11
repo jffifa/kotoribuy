@@ -11,7 +11,7 @@
     {% endif %}
     <div class="row" style="margin-bottom:40px">
         {% for booth in booths %}
-        <div class="col-md-4" data-toggle="tooltip" data-placement="bottom" title="booth.circle"><a href="{% url 'booth_detail' booth.id %}" class="thumbnail">
+        <div class="col-md-4" data-toggle="tooltip" data-placement="bottom" title="{{ booth.circle }}"><a href="{% url 'booth_detail' booth.id %}" class="thumbnail">
             <img src="{{ booth.logo.url }}"/>
         </a></div>
         {% if forloop.counter|divisibleby:3 %}
@@ -39,7 +39,9 @@
 </div>
 {% endblock %}
 {% block footer_extra %}
+<script>
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+</script>
 {% endblock %}
