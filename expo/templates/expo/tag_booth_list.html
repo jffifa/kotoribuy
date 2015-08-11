@@ -9,9 +9,9 @@
     {% else %}
     <h1 class="page-header">Comiket 88 <small>just buy</small></h1>
     {% endif %}
-    <div class="row">
+    <div class="row" style="margin-bottom:40px">
         {% for booth in booths %}
-        <div class="col-md-4"><a href="{% url 'booth_detail' booth.id %}" class="thumbnail">
+        <div class="col-md-4" data-toggle="tooltip" data-placement="bottom" title="booth.circle"><a href="{% url 'booth_detail' booth.id %}" class="thumbnail">
             <img src="{{ booth.logo.url }}"/>
         </a></div>
         {% if forloop.counter|divisibleby:3 %}
@@ -37,4 +37,9 @@
 </div>
 </div>
 </div>
+{% endblock %}
+{% block footer_extra %}
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 {% endblock %}
