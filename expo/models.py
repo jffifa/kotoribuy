@@ -43,6 +43,27 @@ class Booth(models.Model):
     def __unicode__(self):
         return u'%s - %s' % (self.circle, self.location)
 
+    def save(self, *args, **kwargs):
+        def parse_tags(tag_str):
+            sp = ','
+            tags = [t.strip() for t in tag_str.strip().split(sp)]
+            tags = [t for t in tags if t]
+            return tags
+
+        tags = parse_tags(self.tags)
+        for t in tags:
+            try:
+                tag = Tag.objects.get(name__exact=t)
+                try:
+                    self.tag_set.add(tag)
+                except:
+                    pass
+            except Tag.DoesNotExist:
+                self.tag_set.create(name=t)
+
+        super(Booth, self).save(*args, **kwargs)
+
+
 
 class BoothTag(models.Model):
     class Meta:
