@@ -28,7 +28,7 @@ def tag_filter(request, tag_id=None, tag_query=''):
         tags = Tag.objects.filter(name__contains=tag_query)
         context['tag_query'] = tag_query
     elif tag_id:
-        tags = Tag.objects.filter(id==tag_id)
+        tags = Tag.objects.filter(id=tag_id)
         context['tag_query'] = tags[0].name
     else:
         tags = Tag.objects.all()
