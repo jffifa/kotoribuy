@@ -18,7 +18,7 @@ def booth_detail(request, booth_id=None):
     return render(request, 'expo/booth_detail.html')
 
 
-def tag_filter(request, tag_query='', tag_id=None):
+def tag_filter(request, tag_id=None, tag_query=''):
     if tag_id:
         tag_id = int(tag_id)
 

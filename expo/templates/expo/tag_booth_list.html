@@ -11,7 +11,7 @@
     {% endif %}
     <div class="row">
         {% for booth in booths %}
-        <div class="col-md-4"><a href="#" class="thumbnail">
+        <div class="col-md-4"><a href="{% url 'booth_detail' booth_id=booth.id %}" class="thumbnail">
             <img src="{{ booth.logo.url }}"/>
         </a></div>
         {% if forloop.counter|divisibleby:3 %}
@@ -22,9 +22,16 @@
     </div>
 </div>
 <div class="col-md-3">
+    <h1 class="page-header">tags</h1>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="search tag">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">go</button>
+        </span>
+    </div>
     <div class="list-group">
         {% for tag in tags %}
-        <a href="#" class="list-group-item">tag.name</a>
+        <a href="{% url 'tag_id' tag_id=tag.id" class="list-group-item">{{ tag.name }}</a>
         {% endfor %}
     </div>
 </div>
