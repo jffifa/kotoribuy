@@ -12,9 +12,10 @@
             <div class="thumbnail">
                 <img src="{{ booth.logo.url }}" />
             </div>
+            <a class="btn btn-primary btn-lg btn-block" href="{% url 'index' %}">Back to Index</a>
         </div>
         <div class="col-md-8">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <tbody>
                 <tr>
                     <td><strong>Enterprise Name</strong></td>
@@ -30,7 +31,7 @@
                 </tr>
                 <tr>
                     <td><strong>Goods Tags</strong></td>
-                    <td>{% for tag in booth_tag %}{% if not forloop.first %}, {% endif %}<a href="{% url 'tag_id' tag_id=tag.id %}">{{ tag.name }}</a>{% endfor %}</td>
+                    <td>{% for tag in booth_tag %}{% if not forloop.first %}, {% endif %}[ <a href="{% url 'tag_id' tag_id=tag.id %}">{{ tag.name }}</a> ]{% endfor %}</td>
                 </tr>
                 <tr>
                     <td><strong>Sp Page</strong></td>

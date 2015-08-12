@@ -50,19 +50,15 @@ class Booth(models.Model):
             tags = [t for t in tags if t]
             return tags
 
-        tags = parse_tags(self.tags)
-        for t in tags:
-            try:
-                tag = Tag.objects.get(name__exact=t)
-                try:
-                    self.tag_set.add(tag)
-                except:
-                    pass
-            except Tag.DoesNotExist:
-                self.tag_set.create(name=t)
-
         super(Booth, self).save(*args, **kwargs)
 
+        tags = parse_tags(self.tags)
+        for t in tags:
+            tag, created = Tag.objects.get_or_create(name=t)
+            try:
+                BoothTag.objects.create(booth=self, tag=tag)
+            except:
+                pass
 
 
 class BoothTag(models.Model):
