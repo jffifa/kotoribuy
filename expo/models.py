@@ -61,10 +61,8 @@ class Booth(models.Model):
 
         for t in tags:
             tag, created = Tag.objects.get_or_create(name=t)
-            try:
+            if not BoothTag.objects.filter(booth=self, tag=tag).exists():
                 BoothTag.objects.create(booth=self, tag=tag)
-            except:
-                pass
 
 
 class BoothTag(models.Model):
