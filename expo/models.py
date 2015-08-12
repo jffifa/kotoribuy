@@ -57,7 +57,7 @@ class Booth(models.Model):
         # synchronize booth tag relationship
         for t in self.tag_set.all():
             if not t.name in tags:
-                t.delete()
+                BoothTag.objects.delete(booth=self, tag=t)
 
         for t in tags:
             tag, created = Tag.objects.get_or_create(name=t)
