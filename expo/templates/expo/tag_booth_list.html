@@ -26,7 +26,7 @@
     <form action="{% url 'tag_query' %}" method="post">
     {% csrf_token %}
     <div class="input-group" style="margin-bottom:10px">
-        <input type="text" class="form-control" placeholder="search tag">
+        <input type="text" class="form-control" placeholder="search tag" name="tag_query">
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit">search</button>
         </span>
