@@ -24,6 +24,7 @@
 <div class="col-md-3">
     <h1 class="page-header">tags</h1>
     <form action="{% url 'tag_query' %}" method="post">
+    {% csrf_token %}
     <div class="input-group" style="margin-bottom:10px">
         <input type="text" class="form-control" placeholder="search tag">
         <span class="input-group-btn">
