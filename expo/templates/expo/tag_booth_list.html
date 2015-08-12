@@ -23,14 +23,14 @@
 </div>
 <div class="col-md-3">
     <h1 class="page-header">tags</h1>
+    <form action="{% url 'tag_query' %}" method="post">
     <div class="input-group" style="margin-bottom:10px">
-        <form action="{% url 'tag_query' %}" method="post">
         <input type="text" class="form-control" placeholder="search tag">
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit">search</button>
         </span>
-        </form>
     </div>
+    </form>
     <div class="list-group">
         {% for tag in tags %}
         <a href="{% url 'tag_id' tag_id=tag.id %}" class="list-group-item">{{ tag.name }}</a>
