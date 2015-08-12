@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from expo.models import Tag, Booth
-from django.http import HttpResponseBadRequest
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -30,7 +30,7 @@ def tag_filter(request, tag_id=None):
     context = {}
 
     if tag_query:
-        tags = Tag.objects.filter(name__contains=tag_query)
+        tags = Tag.objects.filter(name__icontains=tag_query)
         context['tag_query'] = tag_query
     elif tag_id:
         tags = Tag.objects.filter(id=tag_id)
