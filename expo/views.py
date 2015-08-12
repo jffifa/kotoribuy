@@ -26,8 +26,6 @@ def tag_filter(request, tag_id=None):
         tag_id = int(tag_id)
     elif request.method == 'POST' and 'tag_query' in request.POST:
         tag_query = request.POST['tag_query']
-    else:
-        return HttpResponseBadRequest
 
     context = {}
 
