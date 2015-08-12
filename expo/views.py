@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from expo.models import Tag, Booth
+from django.http import HttpResponseBadRequest
 
 
 # Create your views here.
@@ -18,9 +19,15 @@ def booth_detail(request, booth_id=None):
     return render(request, 'expo/booth_detail.html', context)
 
 
-def tag_filter(request, tag_id=None, tag_query=''):
+def tag_filter(request, tag_id=None):
+    tag_query = None
+
     if tag_id:
         tag_id = int(tag_id)
+    elif request.method == 'POST' and 'tag_query' in request.POST:
+        tag_query = request.POST['tag_query']
+    else:
+        return HttpResponseBadRequest
 
     context = {}
 
